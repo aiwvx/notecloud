@@ -185,7 +185,27 @@
                 <button id="unlockBtn" onclick="doUnlockShare()" class="w-full bg-gradient-to-r from-orange-600 to-red-600 text-white py-5 rounded-2xl font-black uppercase tracking-widest shadow-xl hover:scale-[1.02] transition">解密并销毁</button>
                 <div id="shareResult" class="mt-8 text-left p-6 bg-slate-950/50 rounded-2xl hidden whitespace-pre-wrap text-sm leading-relaxed border border-orange-500/20 ring-1 ring-orange-500/10 shadow-inner italic text-slate-300"></div>
                 <div class="pt-8 border-t border-white/5">
-                    <a href="https://www.youtube.com/@sanshicao" target="_blank" class="text-xs font-black uppercase tracking-widest text-red-500 hover:text-red-400 transition underline underline-offset-4">🎬 请关注 微信公众号 AI智谷X </a>                    <a href="https://www.youtube.com/@sanshicao" target="_blank" class="text-xs font-black uppercase tracking-widest text-red-500 hover:text-red-400 transition underline underline-offset-4">🎬 关注 YouTube @三十槽 学习搭建</a>                    <a href="https://www.youtube.com/                    <a href="https://www.youtube.com/@sanshicao" target="_blank" class="text-xs font-black uppercase tracking-widest text-red-500 hover:text-red-400 transition underline underline-offset-4">🎬 请关注 微信公众号AI 学习搭建</a>                    <a href="https://www.youtube.com/@sanshicao" target="_blank" class="text-xs font-black uppercase tracking-widest text-red-500 hover:text-red-400 transition underline underline-offset-4">🎬 关注 YouTube @三十槽 学习搭建</a>                    <a href="https://www.youtube.com/                    <a href="https://www.youwuw').value;
+                    <a href="https://www.youtube.com/@sanshicao" target="_blank" class="text-xs font-black uppercase tracking-widest text-red-500 hover:text-red-400 transition underline underline-offset-4">🎬 关注 YouTube @三十槽 学习搭建</a>
+                </div>
+            </div>
+        `;
+        }
+
+        /* --- 功能逻辑 --- */
+        function configUrl() {
+            document.getElementById('settingsModal').classList.remove('hidden');
+            document.getElementById('setApi').value = API_URL;
+            document.getElementById('setKey').value = ADMIN_KEY;
+        }
+        function closeSettings() { document.getElementById('settingsModal').classList.add('hidden'); }
+        function saveSettings() {
+            localStorage.setItem('cf_notes_api', document.getElementById('setApi').value);
+            localStorage.setItem('cf_notes_key', document.getElementById('setKey').value);
+            location.reload();
+        }
+
+        async function doSave() {
+            const text = document.getElementById('noteInput').value; const pw = document.getElementById('mainPw').value;
             if (!text || !pw) return alert("请填写内容和密码");
             try {
                 const cipher = await encrypt(text, pw);
